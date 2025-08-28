@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JB Fan Page + Bouncing Screensaver</title>
+
+  <style>
+    /* Rainbow heading */
+    @keyframes rainbow {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+
+    /* Background tiling GIF */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* avoid scrollbars with absolute elements */
+      background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHhyeHk5MHp0bm14MWR0cDhhNjVneGJidHU5d29kNzdhbjloOTRpdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Zczdb534H4rlK/giphy.gif') repeat;
+      background-size: 200px 200px; /* size of each tile */
+    }
+
+    /* Heading */
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      animation: rainbow 3s infinite;
+      margin: 0;
+    }
+
+    /* Your two placed GIFs */
+    .gif {
+      position: absolute;
+      top: 300px;   /* distance from top */
+      left: 200px;  /* distance from left */
+      width: 300px; /* optional resize */
+    }
+    .mirror {
+      position: absolute;
+      top: 300px;
+      right: 200px;
+      width: 300px;
+      transform: scaleX(-1); /* mirror horizontally */
+    }
+
+    /* === Bouncing screensaver === */
+    #bounce {
+      position: fixed;      
+      left: 0; top: 0;
+      transform: translate(120px, 120px);
+      z-index: 10;          
+      will-change: transform, filter;
+      user-select: none;
+      pointer-events: none; 
+    }
+    #bounce img {
+      display: block;
+      width: 180px;         
+      height: auto;
+    }
+    h2{
+        position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      animation: rainbow 3s infinite;
+      margin: 0;
+    }
+
+        .bg-gif {
+      position: absolute;
+      width: 150px; /* size of each */
+      height: auto;
+      z-index: 0;
+      opacity: 0.7; /* see-through */
+    }
+  </style>
+</head>
+
+<body>
+  <h1>I LOVE JUSTIN</h1>
+
+  <!-- Your original placed GIFs -->
+  <img
+    src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YzA5bWp6d2kxdWV0aHh5dnJrZWd2d2Y0bzB5dml2YXk1Zzg5cmo1MyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/10Vx2Sc4ROKpaw/giphy.gif"
+    class="gif"
+    alt="Justin GIF (left)"
+  >
+  <img
+    src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YzA5bWp6d2kxdWV0aHh5dnJrZWd2d2Y0bzB5dml2YXk1Zzg5cmo1MyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/10Vx2Sc4ROKpaw/giphy.gif"
+    class="mirror"
+    alt="Justin GIF (right mirrored)"
+  >
+
+  <!-- Bouncing screensaver element -->
+  <div id="bounce">
+    <img
+      src="justin crack.jpg"
+      alt="Bouncing Justin"
+    />
+  </div>
+
+  <script>
+    // Simple “DVD-style” bounce for #bounce
+    const el = document.getElementById('bounce');
+
+    let x = 120, y = 120;   // starting position
+    let vx = 3,  vy = 2.4;  // velocity (px per frame)
+
+    // randomize starting direction
+    if (Math.random() < 0.5) vx *= -1;
+    if (Math.random() < 0.5) vy *= -1;
+
+    function hitEdge() {
+      // fun hue change on edge hit
+      const h = Math.floor(Math.random() * 360);
+      el.style.filter = `hue-rotate(${h}deg)`;
+    }
+
+    function tick() {
+      x += vx;
+      y += vy;
+
+      const rect = el.getBoundingClientRect();
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+
+      // Horizontal bounce
+      if (x <= 0) {
+        x = 0;
+        vx = Math.abs(vx);
+        hitEdge();
+      } else if (x + rect.width >= W) {
+        x = W - rect.width;
+        vx = -Math.abs(vx);
+        hitEdge();
+      }
+
+      // Vertical bounce
+      if (y <= 0) {
+        y = 0;
+        vy = Math.abs(vy);
+        hitEdge();
+      } else if (y + rect.height >= H) {
+        y = H - rect.height;
+        vy = -Math.abs(vy);
+        hitEdge();
+      }
+
+      el.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(tick);
+    }
+
+    // Keep inside after resize
+    window.addEventListener('resize', () => {
+      const rect = el.getBoundingClientRect();
+      x = Math.min(x, window.innerWidth  - rect.width);
+      y = Math.min(y, window.innerHeight - rect.height);
+    });
+
+    requestAnimationFrame(tick);
+
+
+
+
+
+        const gifs = [
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dGVtejBoa2UyMzJzNTZhZnZydWxxZWtpMzY5d3RhbWI0eThrNnk2cSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/N0CYj22HAD3MI/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Yjl0cHM1bzhsMGhwbTVzNjViN3ViYWMwbnVodG9uYjIzcG54MjU5bSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/UVGZwxp2bpPerQAA0B/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3a3I2M2twZ3l5cWFmenhlY3B5OXMwZmtnZnI2djhxcnBwZGEzamhnYyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/ydeKkQ2ARId1Kqz7BP/giphy.gif",
+      "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+    ];
+
+    const total = 20; // how many gifs to scatter
+    for (let i = 0; i < total; i++) {
+      const img = document.createElement("img");
+      img.src = gifs[Math.floor(Math.random() * gifs.length)];
+      img.className = "bg-gif";
+      img.style.top = Math.random() * window.innerHeight + "px";
+      img.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(img);
+    }
+  </script>
+</body>
+</html>
