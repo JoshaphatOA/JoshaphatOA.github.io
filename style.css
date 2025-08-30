@@ -1,1 +1,17 @@
+.container{
+    text-align: center;
+}
 
+.projects{
+  display: flex;
+  
+}
+
+.inline-block{
+    display: inline-block;
+    background-color: green;
+    margin: 6px;
+    padding: 8px;
+    width: 120px;
+    height: 100px;
+}
