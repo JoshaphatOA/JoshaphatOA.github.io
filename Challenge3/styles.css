@@ -1,0 +1,210 @@
+/* styles.css - Challenge #3 (Skeleton: Park Map - Positioning) */
+
+
+/* 0) Base page (font, background, text color, remove default margins) */
+body{
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: aliceblue;
+}
+
+/* 1) Container (center, max-width, padding) */
+.container{
+   padding: 10px;
+   max-width: 900px;
+}
+
+/* 2) Map section heading (spacing, readability) */
+.map-section{
+
+}
+
+/* 3) Map wrapper
+   - Make this the positioning context for absolute children (hint: relative).
+   - Ensure it doesn't overflow horizontally.
+*/
+.map-wrapper{
+   box-shadow: 0px 0px 3px #ccc;
+   border-radius: 10px;
+   padding: 10px;
+   text-align: center;
+}
+
+/* 4) Map image
+   - Keep it responsive inside the container (full width of wrapper, auto height).
+*/
+.park-wrapper{
+   width: 100%;
+}
+
+/* 5) Markers
+   - Style as small circular buttons (size, color, border-radius).
+   - Absolutely position them using top/left percentages so they sit over the map.
+   - Center each marker over its coordinates (hint: translate).
+   - Ensure markers appear ABOVE the map (z-index).
+*/
+.marker{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background-color: rgb(255, 0, 123);
+   border-color: white;
+
+}
+
+#marker-atlantis { top: 320px; left: 230px; }
+#marker-gyro     { top: 257px; left: 662px; }
+#marker-carousel { top: 445px; left: 304px; }
+#marker-river    { top: 468px; left: 598px; }
+
+/* 6) Tooltips
+   - Hidden by default; visible on hover of the marker.
+   - Small label box above the marker (position absolute relative to marker).
+   - Add a subtle background, border, and rounded corners.
+   - Raise above map and marker with z-index.
+*/
+.tooltip{
+   white-space: nowrap;
+
+   visibility: hidden;
+   background-color: black;
+   color: #fff;
+   text-align: center;
+   border-radius: 3px;
+
+   padding: 5px;
+
+   position: absolute;
+   bottom: 150%;
+   transform: translateX(-50%);
+
+}
+
+.marker:hover .tooltip{
+   visibility: visible;
+}
+
+/* 7) Legend box
+   - Position absolute INSIDE the map wrapper, bottom-right corner.
+   - Add background, padding, small rounded corners.
+   - Keep text legible and compact.
+*/
+.legend{
+   position: absolute;
+   width: 90px;
+   height: 70px;
+   box-shadow: 0px 0px 3px #ccc;
+   border-radius: 10px;
+
+   text-align: left;
+   font-size: small;
+
+   background-color: white;
+   top: 530px;
+   right: 70px;
+
+   padding-bottom: 10px;
+   padding-left: 15px;
+}
+
+/* .legend ul{
+   padding-left: 0px;
+   list-style-position: inside;
+   text-align: left;
+
+   margin-top: 5px;
+}*/
+
+.legend h3{
+   margin-bottom: 0px;
+}
+
+.legend ul {
+   list-style: none;     /* ← removes the black bullets */
+   margin: 6px 0 0;
+   padding: 0;
+}
+
+/* 2) Align each row: dot + label side-by-side, centered vertically */
+.legend li {
+   display: flex;
+   align-items: center;
+   gap: 8px;             /* space between dot and text */
+   line-height: 1.2;     /* tighten vertical spacing */
+   margin: 6px 0;
+}
+
+.dot {
+   display: inline-block;      /* so width/height apply */
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   flex: 0 0 12px;             /* keeps dot from stretching */
+}
+.dot.ride {
+   background-color: #e91e63;
+}
+
+.dot.landmark {
+   background-color: #2196f3;
+}
+
+
+/* 8) Fixed Back to Top button
+   - Position fixed at bottom-right of viewport.
+   - Visible at all times.
+   - Style as a small pill button.
+   - Keep above everything with z-index.
+*/
+.back-to-top{
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   align-items: center;
+
+   text-decoration: none;
+   font-weight: bold;
+   font-style: normal;
+   justify-content: center;
+
+   color: white;
+   display: inline-flex;
+   height: 35px;
+   width: 70px;
+   border-radius: 9999px;
+   background-color: blue;
+}
+
+/* 9) Footer (muted, centered) */
+.site-footer{
+   border-top: 1px solid #ccc;
+   text-align: center;
+}
+
+/* 10) Getting Here & Around section styling  */
+.transport{
+   margin-bottom: 20px;
+}
+
+.transport-columns{
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+}
+
+.transport-info{
+   padding: 0px 10px;
+   background-color: white;
+   width: 50%;
+   box-shadow: 0px 0px 3px #ccc;
+   border-radius: 10px;
+}
+
+.transport-discounts{
+   padding: 0px 10px;
+   background-color: white;
+   width: 50%;
+   box-shadow: 0px 0px 3px #ccc;
+   border-radius: 10px;
+
+}
