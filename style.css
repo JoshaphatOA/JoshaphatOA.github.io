@@ -28,19 +28,28 @@ body{
 
 .project{
     display: inline-flex;
+    flex-direction: column;
+    background-color: aliceblue;
+
     justify-content: center;
     align-items: center;
     
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 
     margin: 20px 20px;
+    padding: 20px 20px;
+    gap: 10px;
 
-    border-radius: 9999px;
+    border-radius: 20px;
     box-shadow: 0px 0px 3px #ccc;
-    width: 30%;
-    height: 80px;
+    width: 22%;
 }
 
-img{
-    height: 80px;
-
+.project-image{
+    width: 70%;
+    border-radius: 20px;
+    object-fit: cover;
+}
 
