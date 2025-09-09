@@ -7,7 +7,7 @@ body{
     text-align: center;
 }
 
-.container{
+.containerPersonal{
     text-align: center;
     justify-content: center;
 
@@ -22,7 +22,7 @@ body{
     background-color: white;
 
     margin: 30px 30px;
-    width: 25%;
+    width: 45%;
 
     box-shadow: 0px 0px 3px #ccc;
     border-radius: 20px;
@@ -43,7 +43,30 @@ body{
     border-radius: 20px;
 }
 
-.projects{
+.carousel {
+  max-width: 1200px;    /* set max width */
+  max-height: 800px;
+  object-fit: cover;
+  margin: auto;        /* center on page */
+
+}
+
+.carousel-item{
+
+    max-height: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  object-position: top;
+}
+
+/* .projects{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,12 +106,12 @@ body{
     box-shadow: 0px 0px 3px #ccc;
     width: 22%;
 }
-
+    
 .project-image{
-    width: 70%;
+    width: 50%;
     border-radius: 20px;
     object-fit: cover;
-}
+} */
 
 .project:hover{
     animation: wiggle 0.3s ease-in-out 1;
@@ -100,7 +123,7 @@ body{
     50% { transform: rotate(-3deg); }
     75% { transform: rotate(3deg); }
     100% { transform: rotate(0deg); }
-}
+} */
 
 .wejio{
     justify-content: center;
@@ -108,7 +131,7 @@ body{
     background-color: white;
 
     margin: 30px 30px;
-    width: 25%;
+    width: 45%;
     padding: 20px 20px;
     padding-top: 0px;
 
